@@ -3,8 +3,10 @@ package models
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 
 	"github.com/iszhaoxg/gin-web/pkg/setting"
 )
@@ -12,9 +14,11 @@ import (
 var db *gorm.DB
 
 type Model struct {
-	ID         int `gorm:"primary_key" json:"id"`
-	CreatedOn  int `json:"created_on"`
-	ModifiedOn int `json:"modified_on"`
+	ID         int    `gorm:"primary_key" json:"id"`
+	CreatedOn  int    `json:"created_on"`
+	ModifiedOn int    `json:"modified_on"`
+	ModifiedBy string `json:"modified_by"`
+	DeletedOn  int    `json:"deleted_on"`
 }
 
 func init() {
@@ -57,4 +61,16 @@ func init() {
 
 func CloseDB() {
 	defer db.Close()
+}
+
+func (tag *Tag) BeforeCreate(scope *gorm.Scope) error {
+	scope.SetColumn("CreatedOn", time.Now().Unix())
+
+	return nil
+}
+
+func (tag *Tag) BeforeUpdate(scope *gorm.Scope) error {
+	scope.SetColumn("ModifiedOn", time.Now().Unix())
+
+	return nil
 }
