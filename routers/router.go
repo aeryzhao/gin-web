@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	v1 "github.com/iszhaoxg/gin-web/api/v1"
 	"github.com/iszhaoxg/gin-web/pkg/setting"
+	"github.com/iszhaoxg/gin-web/routers/api"
 )
 
 func InitRouter() *gin.Engine {
@@ -18,6 +19,8 @@ func InitRouter() *gin.Engine {
 			"message": "test",
 		})
 	})
+
+	engine.GET("/auth", api.GetAuth)
 
 	apiV1 := engine.Group("/api/v1")
 	{
