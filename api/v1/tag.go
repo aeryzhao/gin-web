@@ -37,6 +37,13 @@ func GetTags(ctx *gin.Context) {
 	})
 }
 
+// @Summary 新增文章标签
+// @Produce  json
+// @Param name query string true "标签名"
+// @Param state query int false "状态"
+// @Param created_by query string false "创建人"
+// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+// @Router /api/v1/tags [post]
 func AddTags(ctx *gin.Context) {
 	name := ctx.Query("name")
 	state := com.StrTo(ctx.DefaultQuery("state", "0")).MustInt()
@@ -50,7 +57,7 @@ func AddTags(ctx *gin.Context) {
 	valid.Range(state, 0, 1, "state").Message("状态只允许0和1")
 
 	code := e.INVALID_PARAMS
-	if valid.HasErrors() {
+	if !valid.HasErrors() {
 		if !models.ExitTagByName(name) {
 			code = e.SUCCESS
 			models.AddTag(name, state, createdBy)
@@ -66,6 +73,14 @@ func AddTags(ctx *gin.Context) {
 	})
 }
 
+// @Summary 修改文章标签
+// @Produce  json
+// @Param id path int true "标签ID"
+// @Param name query string true "标签名"
+// @Param state query int false "状态"
+// @Param modified_by query string true "创建人"
+// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+// @Router /api/v1/tags/{id} [put]
 func EditTags(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 	name := ctx.Query("name")
@@ -107,6 +122,10 @@ func EditTags(ctx *gin.Context) {
 	})
 }
 
+// @Summary 删除标签
+// @Param id path int true "标签ID"
+// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+// @Router /api/v1/tags/{id} [delete]
 func DeleteTags(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 

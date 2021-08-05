@@ -2,9 +2,9 @@ package models
 
 type Tag struct {
 	Model
-	Name     string `json:"name"`
-	State    int    `json:"state"`
-	CreateBy string `json:"create_by"`
+	Name      string `json:"name"`
+	State     int    `json:"state"`
+	CreatedBy string `json:"created_by"`
 }
 
 func GetTags(pageNum int, pageSize int, maps interface{}) (tags []Tag) {
@@ -26,11 +26,11 @@ func ExitTagByName(name string) bool {
 	return false
 }
 
-func AddTag(name string, state int, createBy string) bool {
+func AddTag(name string, state int, createdBy string) bool {
 	db.Create(&Tag{
-		Name:     name,
-		State:    state,
-		CreateBy: createBy,
+		Name:      name,
+		State:     state,
+		CreatedBy: createdBy,
 	})
 	return true
 }
