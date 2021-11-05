@@ -7,6 +7,9 @@ import (
 	"net/http"
 )
 
+// @title 简单博客服务
+// @version 1.0
+// @description 提供简单练习
 func main() {
 	router := routers.InitRouter()
 

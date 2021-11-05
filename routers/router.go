@@ -34,5 +34,14 @@ func InitRouter() *gin.Engine {
 		apiV1.DELETE("/tags/:id", v1.DeleteTags)
 	}
 
+	articleApi := r.Group("/api/v1")
+	{
+		articleApi.GET("/articles", v1.GetArticles)
+		articleApi.GET("/articles/:id", v1.GetArticle)
+		articleApi.POST("/articles", v1.AddArticle)
+		articleApi.PUT("/articles/:id", v1.EditArticle)
+		articleApi.DELETE("/articles/:id", v1.DeleteArticle)
+	}
+
 	return r
 }

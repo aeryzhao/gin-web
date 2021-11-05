@@ -11,6 +11,11 @@ import (
 	"net/http"
 )
 
+// @Tags 标签
+// @Summary 查询标签
+// @Produce json
+// @Param name query string false "标签名"
+// @Router /api/v1/tags [get]
 func GetTags(ctx *gin.Context) {
 	name := ctx.Query("name")
 	maps := make(map[string]interface{})
@@ -37,6 +42,7 @@ func GetTags(ctx *gin.Context) {
 	})
 }
 
+// @Tags 标签
 // @Summary 新增文章标签
 // @Produce  json
 // @Param name query string true "标签名"
@@ -73,6 +79,7 @@ func AddTags(ctx *gin.Context) {
 	})
 }
 
+// @Tags 标签
 // @Summary 修改文章标签
 // @Produce  json
 // @Param id path int true "标签ID"
@@ -122,6 +129,7 @@ func EditTags(ctx *gin.Context) {
 	})
 }
 
+// @Tags 标签
 // @Summary 删除标签
 // @Param id path int true "标签ID"
 // @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"

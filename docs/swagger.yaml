@@ -1,7 +1,14 @@
 info:
   contact: {}
+  description: 提供简单练习
+  title: 简单博客服务
+  version: "1.0"
 paths:
   /api/v1/tags:
+    get:
+      summary: 查询标签
+      tags:
+      - 标签
     post:
       parameters:
       - description: 标签名
@@ -25,6 +32,8 @@ paths:
           schema:
             type: string
       summary: 新增文章标签
+      tags:
+      - 标签
   /api/v1/tags/{id}:
     delete:
       parameters:
@@ -39,6 +48,8 @@ paths:
           schema:
             type: string
       summary: 删除标签
+      tags:
+      - 标签
     put:
       parameters:
       - description: 标签ID
@@ -68,4 +79,6 @@ paths:
           schema:
             type: string
       summary: 修改文章标签
+      tags:
+      - 标签
 swagger: "2.0"
