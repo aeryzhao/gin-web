@@ -3,7 +3,7 @@ package routers
 import (
 	"github.com/gin-gonic/gin"
 	v1 "github.com/iszhaoxg/gin-web/api/v1"
-	_ "github.com/iszhaoxg/gin-web/docs"
+	"github.com/iszhaoxg/gin-web/middleware/jwt"
 	"github.com/iszhaoxg/gin-web/pkg/setting"
 	"github.com/iszhaoxg/gin-web/routers/api"
 	swaggerFiles "github.com/swaggo/files"
@@ -27,6 +27,7 @@ func InitRouter() *gin.Engine {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	apiV1 := r.Group("/api/v1")
+	apiV1.Use(jwt.JWT())
 	{
 		apiV1.GET("/tags", v1.GetTags)
 		apiV1.POST("/tags", v1.AddTags)
