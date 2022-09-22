@@ -16,7 +16,7 @@ import (
 // @Summary 获取单篇文章
 // @Produce json
 // @Param id path int true "文章ID"
-// @Router /api/v1/article [get]
+// @Router /api/v1/articles [get]
 func GetArticle(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 
@@ -82,7 +82,7 @@ func GetArticles(ctx *gin.Context) {
 // @Summary 获取单篇文章
 // @Produce json
 // @Param id path int true "文章ID"
-// @Router /api/v1/article [get]
+// @Router /api/v1/article [post]
 func AddArticle(ctx *gin.Context) {
 	tagId := com.StrTo(ctx.Query("tag_id")).MustInt()
 	title := ctx.Query("title")

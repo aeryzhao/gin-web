@@ -12,7 +12,12 @@
 ## swaggo
 ### 安装
 要使用swaggo,首先需要安装`swag cli`
-> go get -u github.com/swaggo/swag/cmd/swag
+```shell
+$ go get -u github.com/swaggo/swag/cmd/swag
+
+# 1.16 及以上版本
+$ go install github.com/swaggo/swag/cmd/swag@latest
+```
 
 ### 使用
 还需要再项目中引用的包
@@ -51,3 +56,26 @@ docs/
 └── swagger.yaml
 ```
 启动项目访问`ip:port/swagger/index.html`
+## Docker 镜像
+1.编写 Dockerfile 文件
+```dockerfile
+FROM scratch
+
+WORKDIR $GOPATH/src/github.com/iszhaoxg/gin-web
+COPY . $GOPATH/src/github.com/iszhaoxg/gin-web
+
+EXPOSE 8000
+CMD ["./go-gin-example"]
+```
+2.编译可执行文件
+```shell
+CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o go-gin-example .
+```
+3.构建镜像
+```shell
+docker build -t gin-blog-docker-scratch .
+```
+4.运行
+```shell
+docker run --link mysql:mysql -p 8000:8000 gin-blog-docker-scratch
+```
