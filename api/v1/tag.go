@@ -11,11 +11,11 @@ import (
 	"net/http"
 )
 
-// @Tags 标签
+// GetTags
+// @Tags    标签
 // @Summary 查询标签
-// @Produce json
-// @Param name query string false "标签名"
-// @Router /api/v1/tags [get]
+// @Param   name query string false "标签名"
+// @Router  /api/v1/tags [get]
 func GetTags(ctx *gin.Context) {
 	name := ctx.Query("name")
 	maps := make(map[string]interface{})
@@ -42,14 +42,13 @@ func GetTags(ctx *gin.Context) {
 	})
 }
 
-// @Tags 标签
-// @Summary 新增文章标签
-// @Produce  json
-// @Param name query string true "标签名"
-// @Param state query int false "状态"
-// @Param created_by query string false "创建人"
-// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
-// @Router /api/v1/tags [post]
+// AddTags
+// @Tags    标签
+// @Summary 新增标签
+// @Param   name       query string true  "标签名"
+// @Param   state      query int    false "状态"
+// @Param   created_by query string false "创建人"
+// @Router  /api/v1/tags [post]
 func AddTags(ctx *gin.Context) {
 	name := ctx.Query("name")
 	state := com.StrTo(ctx.DefaultQuery("state", "0")).MustInt()
@@ -79,15 +78,14 @@ func AddTags(ctx *gin.Context) {
 	})
 }
 
-// @Tags 标签
-// @Summary 修改文章标签
-// @Produce  json
-// @Param id path int true "标签ID"
-// @Param name query string true "标签名"
-// @Param state query int false "状态"
-// @Param modified_by query string true "创建人"
-// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
-// @Router /api/v1/tags/{id} [put]
+// EditTags
+// @Tags    标签
+// @Summary 修改标签
+// @Param   id          path  int    true  "标签ID"
+// @Param   name        query string true  "标签名"
+// @Param   state       query int    false "状态"
+// @Param   modified_by query string true  "创建人"
+// @Router  /api/v1/tags/{id} [put]
 func EditTags(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 	name := ctx.Query("name")
@@ -129,11 +127,11 @@ func EditTags(ctx *gin.Context) {
 	})
 }
 
-// @Tags 标签
+// DeleteTags
+// @Tags    标签
 // @Summary 删除标签
-// @Param id path int true "标签ID"
-// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
-// @Router /api/v1/tags/{id} [delete]
+// @Param   id path int true "标签ID"
+// @Router  /api/v1/tags/{id} [delete]
 func DeleteTags(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 

@@ -14,12 +14,6 @@ type Article struct {
 	Content string `json:"content"`
 }
 
-func test() {
-	var article Article
-	article.ID = 1
-
-}
-
 func (article *Article) BeforeCreate(scope *gorm.Scope) error {
 	scope.SetColumn("CreatedOn", time.Now().Unix())
 

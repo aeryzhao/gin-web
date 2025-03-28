@@ -2,11 +2,11 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/iszhaoxg/gin-web/api"
 	v1 "github.com/iszhaoxg/gin-web/api/v1"
 	_ "github.com/iszhaoxg/gin-web/docs"
 	"github.com/iszhaoxg/gin-web/middleware/jwt"
 	"github.com/iszhaoxg/gin-web/pkg/setting"
-	"github.com/iszhaoxg/gin-web/routers/api"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )

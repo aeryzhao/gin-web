@@ -7,9 +7,11 @@ import (
 	"net/http"
 )
 
-// @title 简单博客服务
-// @version 1.0
-// @description 提供简单练习
+// @title       简单博客服务
+// @version     1.0
+// @description 简单的 web 服务
+// @host        localhost:8000
+// @BasePath    /api/v1
 func main() {
 	router := routers.InitRouter()
 

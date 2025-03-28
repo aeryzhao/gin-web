@@ -54,7 +54,7 @@ CREATE TABLE `blog_auth`  (
 -- ----------------------------
 -- Records of blog_auth
 -- ----------------------------
-INSERT INTO `blog_auth` VALUES (1, 'test', 'test123456');
+INSERT INTO `blog_auth` VALUES (1, 'test', '123456');
 
 -- ----------------------------
 -- Table structure for blog_tag

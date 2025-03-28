@@ -1,17 +1,22 @@
 # gin-web
-使用到的依赖
+本项目使用到的依赖
 - gorm
 - gin
-- swaggo
+- swag-go
 - go-ini
-## gin
 
+## gin
+[官方文档](https://gin-gonic.com/zh-cn/docs/)
 
 ## gorm
+[官方文档](https://gorm.io/zh_CN/docs/index.html)
 
-## swaggo
+## swag-go
+[官方文档](https://github.com/swaggo/swag/blob/master/README_zh-CN.md)
+
 ### 安装
-要使用swaggo,首先需要安装`swag cli`
+要使用swag-go,首先需要安装`swag cli`
+
 ```shell
 $ go get -u github.com/swaggo/swag/cmd/swag
 
@@ -21,13 +26,16 @@ $ go install github.com/swaggo/swag/cmd/swag@latest
 
 ### 使用
 还需要再项目中引用的包
+
 ```shell
 # gin-swagger 中间件
 go get github.com/swaggo/gin-swagger
 # swagger 内置文件
 go get github.com/swaggo/gin-swagger/swaggerFiles
 ```
+
 ### 注释
+
 #### API操作
 | 注释        | 描述                                                         |
 | ----------- | ------------------------------------------------------------ |
@@ -45,8 +53,11 @@ go get github.com/swaggo/gin-swagger/swaggerFiles
 | router      | 以空格分隔的路径定义。 `path`,`[httpMethod]`                 |
 
 ### 生成
+
 进入项目根目录中，执行初始化命令
-> swag init
+```shell
+swag init
+```
 
 会在项目目录中生成如下：
 ```shell
@@ -56,8 +67,11 @@ docs/
 └── swagger.yaml
 ```
 启动项目访问`ip:port/swagger/index.html`
+
 ## Docker 镜像
+
 1.编写 Dockerfile 文件
+
 ```dockerfile
 FROM scratch
 
@@ -67,14 +81,17 @@ COPY . $GOPATH/src/github.com/iszhaoxg/gin-web
 EXPOSE 8000
 CMD ["./go-gin-example"]
 ```
+
 2.编译可执行文件
 ```shell
 CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o go-gin-example .
 ```
+
 3.构建镜像
 ```shell
 docker build -t gin-blog-docker-scratch .
 ```
+
 4.运行
 ```shell
 docker run --link mysql:mysql -p 8000:8000 gin-blog-docker-scratch
