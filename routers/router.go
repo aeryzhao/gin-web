@@ -3,7 +3,6 @@ package routers
 import (
 	"github.com/aeryzhao/gin-web/api"
 	v1 "github.com/aeryzhao/gin-web/api/v1"
-	_ "github.com/aeryzhao/gin-web/docs"
 	"github.com/aeryzhao/gin-web/middleware/jwt"
 	"github.com/aeryzhao/gin-web/pkg/setting"
 	"github.com/gin-gonic/gin"
