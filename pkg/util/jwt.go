@@ -1,7 +1,7 @@
 package util
 
 import (
-	"github.com/iszhaoxg/gin-web/pkg/setting"
+	"github.com/aeryzhao/gin-web/pkg/setting"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"

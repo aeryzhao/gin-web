@@ -2,16 +2,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/iszhaoxg/gin-web/pkg/setting"
-	"github.com/iszhaoxg/gin-web/routers"
+	"github.com/aeryzhao/gin-web/pkg/setting"
+	"github.com/aeryzhao/gin-web/routers"
 	"net/http"
 )
 
-// @title       简单博客服务
-// @version     1.0
-// @description 简单的 web 服务
-// @host        localhost:8000
-// @BasePath    /api/v1
+// @title                      简单博客服务
+// @version                    1.0
+// @description                简单的 web 服务
+// @host                       localhost:8000
+// @securityDefinitions.apikey BearerAuth
+// @in                         header
+// @name                       Authorization
+// @description                JWT Token (格式: `Bearer <token>`)
 func main() {
 	router := routers.InitRouter()
 

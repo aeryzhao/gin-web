@@ -1,12 +1,12 @@
 package v1
 
 import (
+	"github.com/aeryzhao/gin-web/models"
+	"github.com/aeryzhao/gin-web/pkg/e"
+	"github.com/aeryzhao/gin-web/pkg/setting"
+	"github.com/aeryzhao/gin-web/pkg/util"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"github.com/iszhaoxg/gin-web/models"
-	"github.com/iszhaoxg/gin-web/pkg/e"
-	"github.com/iszhaoxg/gin-web/pkg/setting"
-	"github.com/iszhaoxg/gin-web/pkg/util"
 	"github.com/unknwon/com"
 	"log"
 	"net/http"

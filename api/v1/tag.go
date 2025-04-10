@@ -1,21 +1,22 @@
 package v1
 
 import (
+	"github.com/aeryzhao/gin-web/models"
+	"github.com/aeryzhao/gin-web/pkg/e"
+	"github.com/aeryzhao/gin-web/pkg/setting"
+	"github.com/aeryzhao/gin-web/pkg/util"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"github.com/iszhaoxg/gin-web/models"
-	"github.com/iszhaoxg/gin-web/pkg/e"
-	"github.com/iszhaoxg/gin-web/pkg/setting"
-	"github.com/iszhaoxg/gin-web/pkg/util"
 	"github.com/unknwon/com"
 	"net/http"
 )
 
 // GetTags
-// @Tags    标签
-// @Summary 查询标签
-// @Param   name query string false "标签名"
-// @Router  /api/v1/tags [get]
+// @Tags     标签
+// @Summary  查询标签
+// @Security BearerAuth
+// @Param    name query string false "标签名"
+// @Router   /api/v1/tags [get]
 func GetTags(ctx *gin.Context) {
 	name := ctx.Query("name")
 	maps := make(map[string]interface{})
@@ -43,12 +44,13 @@ func GetTags(ctx *gin.Context) {
 }
 
 // AddTags
-// @Tags    标签
-// @Summary 新增标签
-// @Param   name       query string true  "标签名"
-// @Param   state      query int    false "状态"
-// @Param   created_by query string false "创建人"
-// @Router  /api/v1/tags [post]
+// @Tags     标签
+// @Summary  新增标签
+// @Security BearerAuth
+// @Param    name       query string true  "标签名"
+// @Param    state      query int    false "状态"
+// @Param    created_by query string false "创建人"
+// @Router   /api/v1/tags [post]
 func AddTags(ctx *gin.Context) {
 	name := ctx.Query("name")
 	state := com.StrTo(ctx.DefaultQuery("state", "0")).MustInt()
@@ -79,13 +81,14 @@ func AddTags(ctx *gin.Context) {
 }
 
 // EditTags
-// @Tags    标签
-// @Summary 修改标签
-// @Param   id          path  int    true  "标签ID"
-// @Param   name        query string true  "标签名"
-// @Param   state       query int    false "状态"
-// @Param   modified_by query string true  "创建人"
-// @Router  /api/v1/tags/{id} [put]
+// @Tags     标签
+// @Summary  修改标签
+// @Security BearerAuth
+// @Param    id          path  int    true  "标签ID"
+// @Param    name        query string true  "标签名"
+// @Param    state       query int    false "状态"
+// @Param    modified_by query string true  "创建人"
+// @Router   /api/v1/tags/{id} [put]
 func EditTags(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 	name := ctx.Query("name")
@@ -128,10 +131,11 @@ func EditTags(ctx *gin.Context) {
 }
 
 // DeleteTags
-// @Tags    标签
-// @Summary 删除标签
-// @Param   id path int true "标签ID"
-// @Router  /api/v1/tags/{id} [delete]
+// @Tags     标签
+// @Summary  删除标签
+// @Security BearerAuth
+// @Param    id path int true "标签ID"
+// @Router   /api/v1/tags/{id} [delete]
 func DeleteTags(ctx *gin.Context) {
 	id := com.StrTo(ctx.Param("id")).MustInt()
 

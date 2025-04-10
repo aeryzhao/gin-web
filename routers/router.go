@@ -1,12 +1,12 @@
 package routers
 
 import (
+	"github.com/aeryzhao/gin-web/api"
+	v1 "github.com/aeryzhao/gin-web/api/v1"
+	_ "github.com/aeryzhao/gin-web/docs"
+	"github.com/aeryzhao/gin-web/middleware/jwt"
+	"github.com/aeryzhao/gin-web/pkg/setting"
 	"github.com/gin-gonic/gin"
-	"github.com/iszhaoxg/gin-web/api"
-	v1 "github.com/iszhaoxg/gin-web/api/v1"
-	_ "github.com/iszhaoxg/gin-web/docs"
-	"github.com/iszhaoxg/gin-web/middleware/jwt"
-	"github.com/iszhaoxg/gin-web/pkg/setting"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -27,22 +27,22 @@ func InitRouter() *gin.Engine {
 	r.GET("/auth", api.GetAuth)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	apiV1 := r.Group("/api/v1")
-	apiV1.Use(jwt.JWT())
+	tagsV1 := r.Group("/api/v1/tags")
+	tagsV1.Use(jwt.JWT())
 	{
-		apiV1.GET("/tags", v1.GetTags)
-		apiV1.POST("/tags", v1.AddTags)
-		apiV1.PUT("/tags/:id", v1.EditTags)
-		apiV1.DELETE("/tags/:id", v1.DeleteTags)
+		tagsV1.GET("", v1.GetTags)
+		tagsV1.POST("", v1.AddTags)
+		tagsV1.PUT("/:id", v1.EditTags)
+		tagsV1.DELETE("/:id", v1.DeleteTags)
 	}
 
-	articleApi := r.Group("/api/v1")
+	articlesV1 := r.Group("/api/v1/articles")
 	{
-		articleApi.GET("/articles", v1.GetArticles)
-		articleApi.GET("/articles/:id", v1.GetArticle)
-		articleApi.POST("/articles", v1.AddArticle)
-		articleApi.PUT("/articles/:id", v1.EditArticle)
-		articleApi.DELETE("/articles/:id", v1.DeleteArticle)
+		articlesV1.GET("", v1.GetArticles)
+		articlesV1.GET("/:id", v1.GetArticle)
+		articlesV1.POST("", v1.AddArticle)
+		articlesV1.PUT("/:id", v1.EditArticle)
+		articlesV1.DELETE("/:id", v1.DeleteArticle)
 	}
 
 	return r

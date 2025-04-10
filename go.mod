@@ -1,4 +1,4 @@
-module github.com/iszhaoxg/gin-web
+module github.com/aeryzhao/gin-web
 
 go 1.16
 
@@ -23,10 +23,10 @@ require (
 )
 
 replace (
-	github.com/iszhaoxg/gin-web/conf => ./gin-web/pkg/conf
-	github.com/iszhaoxg/gin-web/middleware => ./gin-web/middleware
-	github.com/iszhaoxg/gin-web/models => ./gin-web/models
-	github.com/iszhaoxg/gin-web/pkg/error => ./gin-web/pkg/error
-	github.com/iszhaoxg/gin-web/pkg/setting => ./gin-web/pkg/setting
-	github.com/iszhaoxg/gin-web/routers => ./gin-web/routers
+	github.com/aeryzhao/gin-web/conf => ./gin-web/pkg/conf
+	github.com/aeryzhao/gin-web/middleware => ./gin-web/middleware
+	github.com/aeryzhao/gin-web/models => ./gin-web/models
+	github.com/aeryzhao/gin-web/pkg/error => ./gin-web/pkg/error
+	github.com/aeryzhao/gin-web/pkg/setting => ./gin-web/pkg/setting
+	github.com/aeryzhao/gin-web/routers => ./gin-web/routers
 )
